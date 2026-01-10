@@ -73,6 +73,11 @@ nav a {
   margin-top: 20px;
 }
 
+.image-center {
+  text-align: center;
+}
+
+
 /* Footer */
 footer {
   background: #222;
