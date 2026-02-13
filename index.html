@@ -55,6 +55,36 @@
   </div>
 </section>
 
+    <script>
+
+document.getElementById("leadForm").addEventListener("submit", function(e) {
+
+  // Prevent instant reload (for testing)
+  e.preventDefault();
+
+  // Capture values
+  const name = e.target.name.value;
+  const email = e.target.email.value;
+  const company = e.target.company.value;
+
+  // Create event object
+  const formEvent = {
+    event_name: "Lead Form Submitted",
+    name: name,
+    email: email,
+    company: company,
+    page_url: window.location.href,
+    timestamp: new Date().toISOString()
+  };
+
+  // Fire event (for now → console)
+  console.log("FORM EVENT FIRED:", formEvent);
+
+});
+
+</script>
+
+
 
     <section class="features">
       <div class="container">
