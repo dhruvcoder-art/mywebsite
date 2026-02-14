@@ -75,6 +75,7 @@ document.getElementById("leadForm").addEventListener("submit", function(e){
   // ⭐ SEND TO WEBHOOK
   fetch("https://webhook.site/f0fba16e-2f97-4580-9d65-5e8839b095ab", {
     method: "POST",
+    mode: "no-cors", 
     headers: {
       "Content-Type": "application/json"
     },
