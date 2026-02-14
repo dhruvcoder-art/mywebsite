@@ -65,24 +65,30 @@ document.getElementById("leadForm").addEventListener("submit", function(e){
     name: e.target.name.value,
     email: e.target.email.value,
     company: e.target.company.value,
+    message: e.target.message?.value || "",
     page_url: window.location.href,
     timestamp: new Date().toISOString()
   };
 
   console.log("FORM EVENT FIRED:", formEvent);
 
-  // ⭐ SEND EVENT TO WEBHOOK / ENDPOINT
+  // ⭐ SEND TO WEBHOOK
   fetch("https://webhook.site/f0fba16e-2f97-4580-9d65-5e8839b095ab", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(formEvent)
+  })
+  .then(res => {
+    console.log("Webhook Response:", res.status);
+  })
+  .catch(err => {
+    console.error("Webhook Error:", err);
   });
 
 });
 </script>
-
 
 
 
