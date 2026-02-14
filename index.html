@@ -55,34 +55,34 @@
   </div>
 </section>
 
-    <script>
+<script>
+document.getElementById("leadForm").addEventListener("submit", function(e){
 
-document.getElementById("leadForm").addEventListener("submit", function(e) {
-
-  // Prevent instant reload (for testing)
   e.preventDefault();
 
-  // Capture values
-  const name = e.target.name.value;
-  const email = e.target.email.value;
-  const company = e.target.company.value;
-
-  // Create event object
   const formEvent = {
     event_name: "Lead Form Submitted",
-    name: name,
-    email: email,
-    company: company,
+    name: e.target.name.value,
+    email: e.target.email.value,
+    company: e.target.company.value,
     page_url: window.location.href,
     timestamp: new Date().toISOString()
   };
 
-  // Fire event (for now → console)
   console.log("FORM EVENT FIRED:", formEvent);
 
-});
+  // ⭐ SEND EVENT TO WEBHOOK / ENDPOINT
+  fetch("https://webhook.site/f0fba16e-2f97-4580-9d65-5e8839b095ab", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(formEvent)
+  });
 
+});
 </script>
+
 
 
 
